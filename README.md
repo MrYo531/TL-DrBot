@@ -1,3 +1,4 @@
+![TL_DrBot banner](https://i.ibb.co/wMYtgx0/banner-more-hype.png)
 # TL_DrBot
 This is a twitter bot that summarizes news articles for you!
 All you have to do is mention it from a tweet that has a news article in it.
