@@ -2,7 +2,11 @@ import requests
 import config
 from newspaper import Article
 
+
 def summry(url):
+    if "twitter" in url:
+        return "Sorry this tweet doesn't have a readable article. Try again (╯︵╰,)"
+
     art = Article(url)
     art.download()
     art.parse()
