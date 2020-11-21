@@ -1,26 +1,24 @@
 """
-TL_DrBot - This twitter bot summarizes news articles for you.
-           All you have to do is mention it from a tweet that has a news article in it.
-           (reply to the tweet and mention @TL_DrBot)
+TL_DrBot - This twitter bot summarizes news articles for you!
+           All you have to do is mention it when replying to a tweet that has a news article in it.
 
-This project was created for Codechella!
-Coded by Jason Zavala, Ashley Liu, Michelle Tai, and Kidus Yohannes
+    This project was created for Codechella!
+
+    Date Created - Nov 20, 2020
+    Authors - Jason Zavala, Ashley Liu, Michelle Tai, and Kidus Yohannes
 """
 
 import tweepy
 import twitter_credentials as tc
 import json
+from get_url import get_url
+from summary import summry
+
 
 # Authentication setup
 auth = tweepy.OAuthHandler(tc.CONSUMER_KEY, tc.CONSUMER_SECRET)
 auth.set_access_token(tc.ACCESS_TOKEN, tc.ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
-
-
-# Summarizes the article from the given url
-def summarize(url):
-    summary = url
-    return summary
 
 
 # Overrides the stream listener to add logic to the on_data method,
@@ -34,10 +32,11 @@ class StreamListener(tweepy.StreamListener):
 
         # Determines if the tweet was a reply from a news article or a stand alone mention
         if parent_tweet_id is not None:
-            # Grab the url from the parent tweet and summarize it
-            parent_tweet = api.get_status(parent_tweet_id)
-            url = parent_tweet.entities["urls"][0]["expanded_url"]
-            summary = summarize(url)
+            # Grabs the url from the parent tweet and summarizes it
+            url = get_url(tc.BEARER_TOKEN, parent_tweet_id)
+            # TODO: Handle stories that are too short. Right now we just return first 280cs
+            summary = summry(url)
+            summary = summary[:(280 - len(tweet_username) - 2)]
 
             # Replies to the original tweet with the summary
             print(summary)
@@ -64,4 +63,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

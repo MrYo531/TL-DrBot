@@ -3,13 +3,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>33c4e018-b6b4-4da7-b1ec-fb244674a5db</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>TLDR_Bot.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>tl_drbot.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>TLDR Bot</Name>
+    <Name>TL_DrBot</Name>
     <RootNamespace>TLDR Bot</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -21,7 +22,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="TLDR_Bot.py" />
+    <Compile Include="get_url.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="config.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="summary.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="tl_drbot.py" />
     <Compile Include="twitter_credentials.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
