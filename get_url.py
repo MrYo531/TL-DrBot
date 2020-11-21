@@ -15,5 +15,8 @@ def get_url(bearer_token, tweet_id):
 
     response = requests.get(f'https://api.twitter.com/2/tweets/{tweet_id}', headers=headers, params=params)
     tweet = json.loads(response.text)
+    if "urls" not in tweet["data"]["entities"]:
+        return "https://www.twitter.com/"
+
     url = tweet["data"]["entities"]["urls"][0]["expanded_url"]
     return url

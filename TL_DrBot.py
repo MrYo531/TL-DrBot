@@ -56,7 +56,7 @@ class StreamListener(tweepy.StreamListener):
 
         else:
             # Replies to the tweet with help instructions
-            api.update_status(f"Hi @{tweet_username} ! I see you've mentioned me but without a news article for me to summarize. UwU."
+            api.update_status(f"Hi @{tweet_username} ! I see you've mentioned me but without a news article for me to summarize. UwU. "
                               f"Mention me when replying to a news article, yeah? <3 OwO", in_reply_to_status_id=tweet["id"])
 
 
