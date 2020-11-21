@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /TLDR Bot/TLDR Bot/twitter_credentials.py
+/TLDR Bot/TLDR Bot/config.py
