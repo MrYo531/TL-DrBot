@@ -16,12 +16,12 @@ def summry(url):
     }
     params = {
         "SM_API_KEY": key,
-        "SM_LENGTH": 1
+        "SM_LENGTH": 3
     }
     header_params = {"Expect":"100-continue"}
     r = requests.post(url=endpoint, params=params, data=data, headers=header_params).json()
 
-    # TODO: Have a better handling process
+    # When the article is too short to summarize, it just returns the whole article
     if "sm_api_error" in r:
         return text
 
